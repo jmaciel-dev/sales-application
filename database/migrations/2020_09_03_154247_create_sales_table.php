@@ -15,16 +15,16 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->integer('name')->comment('numero da venda');
-            $table->integer('product_id')->unsigned()->comment('id do produto');
-            $table->foreign( 'product_id' )->references( 'id' )->on( 'accounts' );
+            $table->integer('sale_number')->comment('numero da venda');
+            $table->unsignedBigInteger('product_id')->comment('id do produto');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->decimal('price',10,2)->comment('preco do produto');
             $table->integer('amount')->comment('quantidade do produto');
-            $table->date('date');
-            $table->string('CEP');
-            $table->string('address');
-            $table->string('number');
-            $table->string('complement');
+            $table->date('date')->comment('data da venda');
+            $table->string('CEP')->comment('cep do endereco de entrega');
+            $table->string('address')->comment('endereco de entrega');
+            $table->string('number')->comment('numero do endereco de entrega');
+            $table->string('complement')->comment('complemento do endereco de entrega');
             $table->timestamps();
         });
     }
