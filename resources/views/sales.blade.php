@@ -40,7 +40,7 @@
                 <div class="modal-body">
                     <input type="hidden" id="id" class="form-control">
                     <div class="form-group">
-                        <label for="nomeProduto" class="control-label">Nome do produto</label>
+                        <label for="nomeProduto" class="control-label">Produto</label>
                         <div class="input-group">
                             <input type="text" class="form-control" id="nomeProduto" placeholder="Nome do produto">
                         </div>
@@ -48,13 +48,13 @@
                     <div class="form-group">
                         <label for="precoProduto" class="control-label">Preço</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="precoProduto" placeholder="Preço do produto">
+                            <input type="number" class="form-control" id="precoProduto" placeholder="0,00">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="quantidadeProduto" class="control-label">Quantidade</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="quantidadeProduto" placeholder="Quantidade do produto">
+                            <input type="number" class="form-control" id="quantidadeProduto" placeholder="1" min="1" >
                         </div>
                     </div>
                     <div class="form-group">
