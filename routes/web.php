@@ -14,3 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'SaleController@index');
+
+/**
+ * Rota de entrada para o app
+ * @var [type]
+ */
+Route::view('/index', 'index');
