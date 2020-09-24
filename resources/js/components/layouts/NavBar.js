@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 function NavBar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-            <button className="navbar-toggler" type="button" dataToggle="collapse" datTarget="#navbar" ariaControls="navbar" ariaExpanded="false" ariaLabel="Toggle navigation">
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbar">
@@ -19,8 +19,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
-if (document.getElementById('navbar')) {
-    ReactDOM.render(<NavBar />, document.getElementById('navbar'));
-    console.log('render navbar');
-}

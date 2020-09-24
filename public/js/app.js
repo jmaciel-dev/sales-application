@@ -69863,6 +69863,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _layouts_NavBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./layouts/NavBar */ "./resources/js/components/layouts/NavBar.js");
+/* harmony import */ var _layouts_SalesList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./layouts/SalesList */ "./resources/js/components/layouts/SalesList.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -69890,6 +69891,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
  //import Header from './layouts/Header'; //ERRADO!!!
 
+
  //import Body from './Body'; //ERRADO!!!
 //import Footer from './Footer' //ERRADO!!!
 
@@ -69907,7 +69909,7 @@ var App = /*#__PURE__*/function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layouts_NavBar__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layouts_NavBar__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layouts_SalesList__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
     }
   }]);
 
@@ -69943,11 +69945,11 @@ function NavBar() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "navbar-toggler",
     type: "button",
-    dataToggle: "collapse",
-    datTarget: "#navbar",
-    ariaControls: "navbar",
-    ariaExpanded: "false",
-    ariaLabel: "Toggle navigation"
+    "data-toggle": "collapse",
+    "data-target": "#navbar",
+    "aria-controls": "navbar",
+    "aria-expanded": "false",
+    "aria-label": "Toggle navigation"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "navbar-toggler-icon"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -69965,10 +69967,41 @@ function NavBar() {
 
 /* harmony default export */ __webpack_exports__["default"] = (NavBar);
 
-if (document.getElementById('navbar')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavBar, null), document.getElementById('navbar'));
-  console.log('render navbar');
+/***/ }),
+
+/***/ "./resources/js/components/layouts/SalesList.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/layouts/SalesList.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+function SalesList() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-8"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-header"
+  }, "Example Component"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body"
+  }, "I'm an example component!")))));
 }
+
+/* harmony default export */ __webpack_exports__["default"] = (SalesList);
 
 /***/ }),
 
@@ -69990,8 +70023,8 @@ if (document.getElementById('navbar')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/jmaciel/Documentos/Projetos/sales-application/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/jmaciel/Documentos/Projetos/sales-application/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/josemaciel/Documentos/Projetos/sales-application/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/josemaciel/Documentos/Projetos/sales-application/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

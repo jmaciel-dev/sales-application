@@ -17,15 +17,15 @@ SETUP LARAVEL + REACT INTEGRADO
 
 6 - Criar resources/views/index.blade.php com layout html básico de para a iniciar a aplicação react. OK
 
-7 - http://localhost:8000/index -> Acessa a página index
+7 - http://localhost:8000/index -> Acessa a página index ( Havia um problema nos components Header, Body e Footer )
 
-8 - Criar resources/js/components/App.js para servir de base para os componentes react.
+8 - Criar resources/js/components/App.js para servir de base para os componentes react. ok
 
-9 - npm run watch -> start o serviço watch que monitora as alterações dos arquivos react
+9 - npm run watch -> start o serviço watch que monitora as alterações dos arquivos react ok
 
 --------------------------------------------------------------------------------
 
-Passo 1: Separe a UI Em Uma Hierarquia De Componentes
+Passo 1: Separe a UI Em Uma Hierarquia De Componentes Em progresso
 
 Passo 2: Crie Uma Versão Estática Em React
 

@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 //import Header from './layouts/Header'; //ERRADO!!!
 import NavBar from './layouts/NavBar';
+import SalesList from './layouts/SalesList';
 //import Body from './Body'; //ERRADO!!!
 //import Footer from './Footer' //ERRADO!!!
 
@@ -15,6 +16,9 @@ class App extends React.Component {
             <BrowserRouter>
                 <div>
                     <NavBar />
+                </div>
+                <div>
+                    <SalesList />
                 </div>
             </BrowserRouter>
         );
