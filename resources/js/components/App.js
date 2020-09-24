@@ -3,15 +3,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Header from './layouts/Header';
+//import Header from './layouts/Header';
 //import Body from './Body';
 //import Footer from './Footer'
 
-/**
- * [App description]
- * @extends Component
- */
-class App extends Component {
+
+class App extends React.Component {
     render () {
         return (
             <BrowserRouter>
@@ -25,8 +22,10 @@ class App extends Component {
                     //<Footer />
                 </div>
             </BrowserRouter>
-        )
+        );
     }
 }
-
-ReactDOM.render(<App />, document.getElementById('app'))
+if (document.getElementById('app')) {
+ReactDOM.render(<App/>, document.getElementById('app'))
+console.log('render app');
+}
