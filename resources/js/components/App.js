@@ -3,9 +3,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-//import Header from './layouts/Header';
-//import Body from './Body';
-//import Footer from './Footer'
+//import Header from './layouts/Header'; //ERRADO!!!
+import NavBar from './layouts/NavBar';
+//import Body from './Body'; //ERRADO!!!
+//import Footer from './Footer' //ERRADO!!!
 
 
 class App extends React.Component {
@@ -13,19 +14,13 @@ class App extends React.Component {
         return (
             <BrowserRouter>
                 <div>
-                    <h1>Teste</h1>
-                </div>
-                <div>
-                    //<Body />
-                </div>
-                <div>
-                    //<Footer />
+                    <NavBar />
                 </div>
             </BrowserRouter>
         );
     }
 }
 if (document.getElementById('app')) {
-ReactDOM.render(<App/>, document.getElementById('app'))
+ReactDOM.render(<App />, document.getElementById('app'))
 console.log('render app');
 }
