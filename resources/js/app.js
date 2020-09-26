@@ -14,4 +14,5 @@ require('./bootstrap');
 
 //require('./components/Example');
 //require('./components/NavBar');
-require('./components/App');
+//require('./components/App');
+require('./components/SaleApp');
