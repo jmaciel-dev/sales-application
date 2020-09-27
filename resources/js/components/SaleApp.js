@@ -28,12 +28,18 @@ class SaleApp extends React.Component {
                 <div className="row justify-content-center">
                     <div className="col-sm-10">
                         <div className="card">
+                            <div className="card-header">
                             <ModalDialogBtn />
+                        </div>
+                        <div className="card-body">
                             <SaleTable sales={this.props.sales}/>
-                            <SaleTotal />
+                        </div>
+                        <div className="card-footer">
+                            <SaleTotal sales={SALES}/>
                         </div>
                     </div>
                 </div>
+            </div>
                 <ModalNewSale />
             </div>
             </BrowserRouter>
@@ -42,9 +48,25 @@ class SaleApp extends React.Component {
 }
 
 const SALES = [
-    {name:'Produto A', price: '10,00', provider:'Forn A, Forn D'},
-    {name:'Produto B', price:'3,00', provider:'---'},
-    {name:'Produto C', price:'5,00', provider:'Forn C'},
+    {name:'Produto A', price: '10.00', provider:'Forn A, Forn D'},
+    {name:'Produto B', price:'3.00', provider:'---'},
+    {name:'Produto C', price:'5.05', provider:'Forn C'},
+];
+const PRODUCTS = [
+    {name: 'Produto A', ref:'eletro'},
+    {name: 'Produto B', ref:'cozinha'},
+    {name: 'Produto C', ref:'celular'},
+    {name: 'Produto D', ref:'eletro'},
+    {name: 'Produto E', ref:'eletro'},
+    {name: 'Produto F', ref:'cozinha'},
+    {name: 'Produto G', ref:'celular'},
+];
+const PROVIDERS = [
+    'Fornecedor A',
+    'Fornecedor B',
+    'Fornecedor C',
+    'Fornecedor D',
+    'Fornecedor E',
 ];
 if (document.getElementById('sale-app')) {
 ReactDOM.render(<SaleApp sales={SALES}/>, document.getElementById('sale-app'))

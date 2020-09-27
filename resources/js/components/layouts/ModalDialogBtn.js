@@ -14,15 +14,13 @@ class ModalDialogBtn extends React.Component {
 
     render() {
         return(
-              <div className="card-header">
-                  <div className="row align-items-center justify-content-end">
-                      <div className="col-4">
-                          <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#saleModal">
-                              Add
-                          </button>
-                      </div>
-                  </div>
-            </div>
+          <div className="row align-items-center justify-content-end">
+              <div className="col-4">
+                  <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#saleModal">
+                      Add
+                  </button>
+              </div>
+          </div>
         );
     }
 }

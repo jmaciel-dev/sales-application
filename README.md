@@ -25,7 +25,7 @@ SETUP LARAVEL + REACT INTEGRADO
 
 --------------------------------------------------------------------------------
 
-1: Separe a UI Em Uma Hierarquia De Componentes Em progresso
+1: Separe a UI Em Uma Hierarquia De Componentes
 
  1.1 - SaleApp - Contém a totalidade do app; ok
  1.2 - SaleNavBar - navbar do app; ok
@@ -44,11 +44,30 @@ SETUP LARAVEL + REACT INTEGRADO
  1.4 - SaleTable - Contém tabela com a lista das vendas; ok
  1.5 - SaleRow - exibe os detalhes de uma venda; ok
  1.6 - SalesTotal - Exibe somátorio das vendas na lista; ok
- 1.7 - ModalForm - Contém o formulário de venda; ok
+ 1.7 - ModalNewSale - Contém o formulário de venda; ok
  1.8 - ModalFormBtn - btão de salvar a venda; ok
 
 Passo 3: Identifique a Representação Mínima (mas completa) do State da UI
 
-Passo 4: Identifique Onde o State Deve Ficar
+1 - Ele é recebido pelo pai via props? Se sim, provavelmente não é state.
+2 - Ele se mantém inalterado ao longo do tempo? Se sim, provavelmente não é state.
+3 - Ele pode ser computado através de qualquer outro state ou props do seu componente? Se sim, não é state.
 
-Passo 5: Adicione o Fluxo de Dados Inverso
+States:
+
+1 - salesTotal -> valor total que se altera conforme a quantidade de vendas;
+2 - salesList -> Qtd de vendas que se altera conforme ação do usuário;
+3 - address -> Endereço de entrega que se altera conforme ação do usuário;
+
+Props:
+
+products -> lista de produtos com nome e referência (ModalNewSale);
+providers -> lista de fornecedores com nomes (ModalNewSale);
+
+Passo 4: Identifique Onde o State Deve Ficar
+States:
+1 - salesTotal -> SaleApp;
+2 - salesList -> SaleApp;
+3 - address -> ModalNewSale;
+
+Passo 5: Adicione o Fluxo de Dados Inverso  Em progresso

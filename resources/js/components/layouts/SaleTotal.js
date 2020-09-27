@@ -11,11 +11,22 @@ class SaleTotal extends React.Component {
     constructor() {
         super();
     }
+    sum(sales) {
+        let sum = 0;
+        let total = '';
+        sales.forEach((sale) => {
+            sum += parseFloat(sale.price);
+        });
+        if (sum % 1 == 0) {
+            total = `${sum},00`;
+        }else {
+            total = sum.toLocaleString();
+        }
+        return total;
+    }
     render() {
         return(
-                <div className="card-footer">
-                    <h4>Total: R$ 18,00</h4>
-                </div>
+            <h4>Total: R$ {this.sum(this.props.sales)}</h4>
         );
     }
 }
