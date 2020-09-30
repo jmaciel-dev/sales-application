@@ -70123,12 +70123,38 @@ var ModalNewSale = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(ModalNewSale);
 
   function ModalNewSale() {
+    var _this;
+
     _classCallCheck(this, ModalNewSale);
 
-    return _super.call(this);
+    _this = _super.call(this);
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ModalNewSale, [{
+    key: "handleChange",
+    value: function handleChange(e) {
+      this.getAdress(e.target.value);
+    }
+    /**
+     * Método que retorna o endereço a partir de um cep digitado.
+     * @param  {[string]} cep [description]
+     * @return {[Object]}     [description]
+     */
+
+  }, {
+    key: "getAdress",
+    value: function getAdress(cep) {
+      var appKey = 'BqDCl6W0dNI3pGOG4AJFUZLB8E8w7yid';
+      var appSecret = 'Vg5V5kntEQR3pNuyhsVY0KiuGV8L2sRTyWEE69smqAggniUh';
+      console.log({
+        appKey: appKey,
+        appSecret: appSecret,
+        cep: cep
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -70200,7 +70226,8 @@ var ModalNewSale = /*#__PURE__*/function (_React$Component) {
         className: "form-control",
         id: "sale-cep",
         maxLength: "8",
-        required: true
+        required: true,
+        onChange: this.handleChange
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -70647,8 +70674,8 @@ var SaleTotal = /*#__PURE__*/function (_React$Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/josemaciel/Documentos/Projetos/sales-application/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/josemaciel/Documentos/Projetos/sales-application/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/jmaciel/Documentos/Projetos/sales-application/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/jmaciel/Documentos/Projetos/sales-application/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

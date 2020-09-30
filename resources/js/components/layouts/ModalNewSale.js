@@ -10,7 +10,28 @@ import ReactDOM from 'react-dom';
 class ModalNewSale extends React.Component{
     constructor() {
         super();
+        this.handleChange = this.handleChange.bind(this);
     }
+
+    handleChange(e) {
+        this.getAdress(e.target.value);
+    }
+
+    /**
+     * Método que retorna o endereço a partir de um cep digitado.
+     * @param  {[string]} cep [description]
+     * @return {[Object]}     [description]
+     */
+    getAdress(cep) {
+        const appKey = 'BqDCl6W0dNI3pGOG4AJFUZLB8E8w7yid';
+        const appSecret = 'Vg5V5kntEQR3pNuyhsVY0KiuGV8L2sRTyWEE69smqAggniUh';
+        console.log({
+            appKey,
+            appSecret,
+            cep,
+        });
+    }
+
     render() {
         return(
         <div id="saleModal" className="modal fade" tabIndex="-1" role="dialog">
@@ -57,7 +78,14 @@ class ModalNewSale extends React.Component{
                             <div className="form-group row">
                                 <label className="col-sm-4 col-form-label" htmlFor="sale-cep">CEP*</label>
                                 <div className="col-sm-8">
-                                <input type="text" className="form-control" id="sale-cep"  maxLength="8" required />
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="sale-cep"
+                                    maxLength="8"
+                                    required
+                                    onChange={this.handleChange}
+                                />
                                 </div>
                             </div>
                             <div className="form-group row">
