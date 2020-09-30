@@ -69995,6 +69995,54 @@ if (document.getElementById('sale-app')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Utils.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/Utils.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Utils = /*#__PURE__*/function () {
+  function Utils() {
+    _classCallCheck(this, Utils);
+  }
+  /**
+   * Retorna um recurso a partir de um GET uma url;
+   * @param  {[string]} url [description]
+   * @return {[json/bool]}     [description]
+   */
+
+
+  _createClass(Utils, null, [{
+    key: "getUrl",
+    value: function getUrl(url) {
+      fetch(url, {
+        method: 'get'
+      }).then(function (resp) {
+        resp.json().then(function (data) {
+          return data;
+        });
+      })["catch"](function (err) {
+        console.error(err);
+      });
+    }
+  }]);
+
+  return Utils;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Utils);
+
+/***/ }),
+
 /***/ "./resources/js/components/layouts/ModalDialogBtn.js":
 /*!***********************************************************!*\
   !*** ./resources/js/components/layouts/ModalDialogBtn.js ***!
@@ -70086,6 +70134,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Utils */ "./resources/js/components/Utils.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -70107,6 +70156,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -70148,11 +70198,21 @@ var ModalNewSale = /*#__PURE__*/function (_React$Component) {
     value: function getAdress(cep) {
       var appKey = 'BqDCl6W0dNI3pGOG4AJFUZLB8E8w7yid';
       var appSecret = 'Vg5V5kntEQR3pNuyhsVY0KiuGV8L2sRTyWEE69smqAggniUh';
-      console.log({
-        appKey: appKey,
-        appSecret: appSecret,
-        cep: cep
-      });
+      var address = '';
+
+      if (cep.length == 8) {
+        var url = "https://webmaniabr.com/api/1/cep/".concat(cep, "/?app_key=").concat(appKey, "&app_secret=").concat(appSecret);
+        address = _Utils__WEBPACK_IMPORTED_MODULE_2__["default"].getUrl(url);
+        console.log('getAdress if', cep, url);
+      } else {
+        console.log({
+          appKey: appKey,
+          appSecret: appSecret,
+          cep: cep
+        });
+      }
+
+      console.log('getAdress if', cep, address);
     }
   }, {
     key: "render",
@@ -70674,8 +70734,8 @@ var SaleTotal = /*#__PURE__*/function (_React$Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/jmaciel/Documentos/Projetos/sales-application/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/jmaciel/Documentos/Projetos/sales-application/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/josemaciel/Documentos/Projetos/sales-application/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/josemaciel/Documentos/Projetos/sales-application/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

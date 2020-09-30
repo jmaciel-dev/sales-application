@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Utils from '../Utils';
 
 /**
  * React Component com o Formulário de nova venda.
@@ -25,11 +26,19 @@ class ModalNewSale extends React.Component{
     getAdress(cep) {
         const appKey = 'BqDCl6W0dNI3pGOG4AJFUZLB8E8w7yid';
         const appSecret = 'Vg5V5kntEQR3pNuyhsVY0KiuGV8L2sRTyWEE69smqAggniUh';
-        console.log({
-            appKey,
-            appSecret,
-            cep,
-        });
+        let address = '';
+        if (cep.length == 8) {
+            let url = `https://webmaniabr.com/api/1/cep/${cep}/?app_key=${appKey}&app_secret=${appSecret}`;
+            address = Utils.getUrl(url);
+            console.log('getAdress if', cep, url);
+        } else {
+            console.log({
+                appKey,
+                appSecret,
+                cep,
+            });
+        }
+        console.log('getAdress if', cep, address);
     }
 
     render() {
