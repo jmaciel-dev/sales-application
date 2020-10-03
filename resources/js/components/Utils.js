@@ -1,3 +1,7 @@
+/**
+ * Classe com utilidades para uso em toda a  aplicacao.
+ *
+ */
 class Utils {
     constructor() {
 
@@ -9,16 +13,18 @@ class Utils {
      * @return {[json/bool]}     [description]
      */
     static getUrl(url) {
-        fetch(url, {
-            method: 'get'
-        })
-        .then(resp => {
-            resp.json()
-            .then(data => {
-                return data;
+        return new Promise((resolve, reject) => {
+            fetch(url, {
+                method: 'get'
+            })
+            .then(resp => {
+                resp.json()
+                .then(data => {
+                    resolve(data);
+                });
+            }).catch(err => {
+                reject(err);
             });
-        }).catch(err => {
-            console.error(err);
         });
     }
 }

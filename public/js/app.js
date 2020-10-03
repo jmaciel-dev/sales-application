@@ -70010,6 +70010,10 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+/**
+ * Classe com utilidades para uso em toda a  aplicacao.
+ *
+ */
 var Utils = /*#__PURE__*/function () {
   function Utils() {
     _classCallCheck(this, Utils);
@@ -70024,14 +70028,16 @@ var Utils = /*#__PURE__*/function () {
   _createClass(Utils, null, [{
     key: "getUrl",
     value: function getUrl(url) {
-      fetch(url, {
-        method: 'get'
-      }).then(function (resp) {
-        resp.json().then(function (data) {
-          return data;
+      return new Promise(function (resolve, reject) {
+        fetch(url, {
+          method: 'get'
+        }).then(function (resp) {
+          resp.json().then(function (data) {
+            resolve(data);
+          });
+        })["catch"](function (err) {
+          reject(err);
         });
-      })["catch"](function (err) {
-        console.error(err);
       });
     }
   }]);
@@ -70163,8 +70169,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 /**
  * React Component com o Formulário de nova venda.
  *
- * @param
- * @returns
+ * @param {[props]} props do component.
+ * @param {[state]} state do component.
  */
 
 var ModalNewSale = /*#__PURE__*/function (_React$Component) {
@@ -70178,45 +70184,68 @@ var ModalNewSale = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ModalNewSale);
 
     _this = _super.call(this);
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleCepChange = _this.handleCepChange.bind(_assertThisInitialized(_this));
+    _this.state = {
+      uf: '',
+      city: '',
+      neighborhood: '',
+      address: ''
+    };
     return _this;
   }
+  /**
+   * Método que maneja a mudanca no input cep.
+   *
+   * @param {[event]} e evento change do input cep.
+   * @returns {[callback]} getAdress();
+   */
+
 
   _createClass(ModalNewSale, [{
-    key: "handleChange",
-    value: function handleChange(e) {
+    key: "handleCepChange",
+    value: function handleCepChange(e) {
       this.getAdress(e.target.value);
     }
     /**
      * Método que retorna o endereço a partir de um cep digitado.
-     * @param  {[string]} cep [description]
-     * @return {[Object]}     [description]
+     * @param  {[string]} cep cep a ser consultado.
+     * @return {[Object]} result  dados do cep consultado.
      */
 
   }, {
     key: "getAdress",
     value: function getAdress(cep) {
+      var _this2 = this;
+
       var appKey = 'BqDCl6W0dNI3pGOG4AJFUZLB8E8w7yid';
       var appSecret = 'Vg5V5kntEQR3pNuyhsVY0KiuGV8L2sRTyWEE69smqAggniUh';
       var address = '';
 
       if (cep.length == 8) {
         var url = "https://webmaniabr.com/api/1/cep/".concat(cep, "/?app_key=").concat(appKey, "&app_secret=").concat(appSecret);
-        address = _Utils__WEBPACK_IMPORTED_MODULE_2__["default"].getUrl(url);
-        console.log('getAdress if', cep, url);
-      } else {
-        console.log({
-          appKey: appKey,
-          appSecret: appSecret,
-          cep: cep
+        _Utils__WEBPACK_IMPORTED_MODULE_2__["default"].getUrl(url).then(function (result) {
+          _this2.setState({
+            uf: result.uf,
+            city: result.cidade,
+            neighborhood: result.bairro,
+            address: result.endereco
+          });
         });
       }
-
-      console.log('getAdress if', cep, address);
     }
+    /**
+     * Método que renderiza o ModalNewSale.
+     *
+     * @return {[HTML]} Html com o modal e o formulário de nova venda.
+     */
+
   }, {
     key: "render",
     value: function render() {
+      var uf = this.state.uf;
+      var city = this.state.city;
+      var neighborhood = this.state.neighborhood;
+      var address = this.state.address;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "saleModal",
         className: "modal fade",
@@ -70287,83 +70316,91 @@ var ModalNewSale = /*#__PURE__*/function (_React$Component) {
         id: "sale-cep",
         maxLength: "8",
         required: true,
-        onChange: this.handleChange
+        onChange: this.handleCepChange
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-4 col-form-label",
-        htmlFor: "sale-cep"
+        htmlFor: "sale-uf"
       }, "UF"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-8"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        id: "sale-cep",
+        id: "sale-uf",
+        value: uf,
         maxLength: "8",
+        readOnly: true,
         required: true
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-4 col-form-label",
-        htmlFor: "sale-cep"
+        htmlFor: "sale-city"
       }, "Cidade"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-8"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        id: "sale-cep",
+        id: "sale-city",
+        value: city,
         maxLength: "8",
+        readOnly: true,
         required: true
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-4 col-form-label",
-        htmlFor: "sale-cep"
+        htmlFor: "sale-neighborhood"
       }, "Bairro"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-8"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        id: "sale-cep",
+        id: "sale-neighborhood",
+        value: neighborhood,
         maxLength: "8",
+        readOnly: true,
         required: true
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-4 col-form-label",
-        htmlFor: "sale-cep"
+        htmlFor: "sale-address"
       }, "Endere\xE7o"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-8"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        id: "sale-cep",
+        id: "sale-address",
+        value: address,
         maxLength: "8",
+        readOnly: true,
         required: true
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-4 col-form-label",
-        htmlFor: "sale-cep"
+        htmlFor: "sale-num"
       }, "N\xFAmero*"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-8"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        id: "sale-cep",
+        id: "sale-num",
         maxLength: "8",
         required: true
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group row"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-4 col-form-label",
-        htmlFor: "sale-cep"
+        htmlFor: "sale-comp"
       }, "Complemento"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-8"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        id: "sale-cep",
+        id: "sale-comp",
         maxLength: "8"
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-footer"
